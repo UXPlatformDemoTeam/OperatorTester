@@ -71,18 +71,6 @@ public class QueryManager implements ServiceConnection {
 	 * Deregister all the queries in the query ID list.
 	 * @param queryIdsList
 	 */
-	/*public void deregisterQuery(List<Integer> queryIdsList) {
-		try {
-			for (int queryId : queryIdsList) {
-				SymphonyService.getInstance().deregisterQuery(queryId);
-				// Logging.
-				Log.d("MainActivity", "deregisterQuery:" + queryId);
-			}
-			queryIdsList.clear();
-		} catch (Exception e) {
-			Log.d("MainActivity", e.toString());
-		}
-	}*/
 	public void deregisterAllQueries() {
 		try {
 			for (int queryId : mQueryIds) {
@@ -134,6 +122,8 @@ public class QueryManager implements ServiceConnection {
 		mRegisteredContexts.clear();
 		mQueryIds.clear();
 
+		final String[] soundQuery = { "PLACE 10000 10000 6000" }; 
+		registerQuery(soundQuery);
 		registerQuery(selectedQuery);
 	}
 

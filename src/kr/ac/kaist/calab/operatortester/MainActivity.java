@@ -75,8 +75,10 @@ public class MainActivity extends Activity {
 			public void onReceive(Context context, Intent intent) {
 				String receivedContext = intent.getStringExtra("context");
 				String receivedResult = intent.getStringExtra("result");
-				
+		
 				if (receivedContext != null){		//Send result to MainActivity.
+					if (receivedContext.equals("PLACE"))	// PLACE query is always registered together.
+						return;
 					Log.d("OpertorTester", "ContextType(QueryName):"+receivedContext);
 				}else{
 					Log.e("OpertorTester", "Received context in ContextReceiver is null.");
@@ -92,11 +94,8 @@ public class MainActivity extends Activity {
 					TextView tv = (TextView)findViewById(R.id.logTextView);
 					tv.append("플로우:"+receivedContext + "\t 결과값:"+receivedResult +"\n");
 				}
-					
-				
 				//checkSymphonyStatus();
 			}
-			
 		};
 		IntentFilter filter = new IntentFilter("com.nclab.partitioning.DEFAULT");
 		registerReceiver(contextReceiver, filter);
