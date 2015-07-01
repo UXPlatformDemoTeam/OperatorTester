@@ -47,6 +47,17 @@
             android:text="@string/refresh"
             android:onClick="onRefreshClicked"/>
         
+        <Button 
+            android:id="@+id/eraseLog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginTop="6dp"
+            android:text="@string/eraseLog"
+            android:onClick="onEraseLogClicked"/>
+        
 
     </LinearLayout>
 
@@ -56,11 +67,6 @@
         android:layout_below="@+id/linearLayout1"
         android:orientation="vertical" >
         
-        <ScrollView
-            android:id="@+id/scrollView1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2" >
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -94,27 +100,28 @@
             </LinearLayout>
 
         </LinearLayout>
-        </ScrollView>
 
         <ScrollView
             android:id="@+id/scrollView2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="6dp"
             android:layout_weight="1"
-            android:background="#fff" >
+            android:background="#a0a0a0">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                android:background="#fff" >
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/logTextView"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Small Text"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="#000" />
+                    android:textColor="#000"
+                     />
 
             </LinearLayout>
         </ScrollView>

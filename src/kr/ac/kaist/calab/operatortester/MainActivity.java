@@ -13,6 +13,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -23,7 +25,7 @@ public class MainActivity extends Activity {
 	
 	private QueryManager mQueryManager;
 	BroadcastReceiver contextReceiver;	//Receive context from Symphony.
-	private int turnedOnBtnNum;
+	private String[] selectedContextType;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +33,9 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		mQueryManager = new QueryManager();
-		mQueryManager.bindPartitionService(this);
 		
 		initView();
 		registerBR();
-		turnedOnBtnNum = 0;
 	}
 	
 	private void initView(){
@@ -43,6 +43,20 @@ public class MainActivity extends Activity {
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.spinner, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
 		spinner.setAdapter(adapter);
+		
+		spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int pos, long id) {
+				selectedContextType = new String[] {(String) parent.getItemAtPosition(pos)};
+				Toast.makeText(MainActivity.this, selectedContextType[0], Toast.LENGTH_SHORT).show();
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+			}
+		});
 	}
 	
 	@Override
@@ -74,6 +88,12 @@ public class MainActivity extends Activity {
 					Log.e("OpertorTester", "Received result in ContextReceiver is null.");
 				}
 				
+				if (receivedContext != null & receivedResult != null){
+					TextView tv = (TextView)findViewById(R.id.logTextView);
+					tv.append("플로우:"+receivedContext + "\t 결과값:"+receivedResult +"\n");
+				}
+					
+				
 				//checkSymphonyStatus();
 			}
 			
@@ -83,34 +103,14 @@ public class MainActivity extends Activity {
 	}
 	
 	public void onToggleClicked(View view){
-		int btnId = view.getId();
-		String[] query;
-		switch (btnId){
-		case R.id.toggleButton1:	//id 이름 바꿔야함.
-			query = new String[]{ "SOUND 3780 10080 3000" };	//쿼리 적절한 것으로 바꿔야 함.
-			break;
-		/*case R.id.toggleButton2:
-			query = new String[]{ "EVENT 945 1400 775" };
-			break;*/
-		default:
-			Log.e("OpertorTester", "There is no such button with ID:"+btnId);
-			return;
-		}
-		
 		boolean on = ((ToggleButton)view).isChecked();
 		if (on){
-			turnedOnBtnNum++;
-			if (turnedOnBtnNum == 1){
-				Log.d("OperatorTester", "First button turned on!!");
-				//mQueryManager.bindPartitionService(this);
-			}
-			mQueryManager.registerQuery(query);
+			mQueryManager.bindPartitionService(this, selectedContextType);
+			Toast.makeText(this, "Bind.", Toast.LENGTH_SHORT).show();
 		}else{
 			mQueryManager.deregisterAllQueries();	//TODO deregister all the query.
-			turnedOnBtnNum--;
-			
-			//mQueryManager.unbindPartitionService(this);
-			//Toast.makeText(this, "All the queries are deregistered.", Toast.LENGTH_SHORT).show();
+			mQueryManager.unbindPartitionService(this);
+			Toast.makeText(this, "Unbind.", Toast.LENGTH_SHORT).show();
 		}
 	}
 	
@@ -119,6 +119,12 @@ public class MainActivity extends Activity {
 		checkSymphonyStatus();
 	}
 	
+	// Erase log button clicked.
+	public void onEraseLogClicked(View view){
+		TextView tv = (TextView)findViewById(R.id.logTextView);
+		tv.setText("");
+	}
+
 	// Check whether Symphony is running or not.
 	private void checkSymphonyStatus() {
 		ActivityManager am = (ActivityManager)((Context)MainActivity.this).getSystemService(Context.ACTIVITY_SERVICE);
@@ -146,10 +152,13 @@ public class MainActivity extends Activity {
 	
 	@Override
 	protected void onDestroy(){
-		super.onDestroy();
 		Log.e("OperatorTester", "onDestroyed() called.");
-		mQueryManager.deregisterAllQueries();
-		mQueryManager.unbindPartitionService(this);
+		super.onDestroy();
+		ToggleButton btn = (ToggleButton)findViewById(R.id.toggleButton1);
+		if (btn.isChecked()){
+			mQueryManager.deregisterAllQueries();
+			mQueryManager.unbindPartitionService(this);
+		}
 		unregisterReceiver(contextReceiver);
 	}
 	

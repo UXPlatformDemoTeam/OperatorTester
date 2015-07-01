@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.Toast;
 
 /**
  * QueryManager for Symphony.
@@ -26,6 +27,7 @@ public class QueryManager implements ServiceConnection {
 	
 	public List<Integer> mQueryIds;	//Registered query IDs.
 	public List<String> mRegisteredContexts;	//Registered contexts.
+	public String[] selectedQuery;
 	
 	public QueryManager(){
 		
@@ -52,6 +54,7 @@ public class QueryManager implements ServiceConnection {
 						.registerQuery(_query);
 
 				// Add to query id list and context list.
+				System.out.println("[JYKIM] register queryID:"+queryId);
 				mQueryIds.add(queryId);
 				mRegisteredContexts.add(queryTokens[0]);
 				
@@ -85,7 +88,7 @@ public class QueryManager implements ServiceConnection {
 			for (int queryId : mQueryIds) {
 				SymphonyService.getInstance().deregisterQuery(queryId);
 				// Logging.
-				Log.d("OperatorTester", "Deregistered queryID:" + queryId);
+				Log.d("OperatorTester", "[JYKIM] Deregistered queryID:" + queryId);
 			}
 			mQueryIds.clear();
 		} catch (Exception e) {
@@ -93,7 +96,11 @@ public class QueryManager implements ServiceConnection {
 		}
 	}
 	
-	public void bindPartitionService(Context context) {
+	public void bindPartitionService(Context context, String[] query) {
+		selectedQuery = query;
+		
+		Toast.makeText(context, selectedQuery[0]+" is binded", Toast.LENGTH_SHORT).show();
+		
 		// 심포니 서비스의 연결 객체를 설정한다.
 		SymphonyService.getInstance().setServiceConnection(this);
 		// 심포니 서비스를 시작한다.
@@ -118,7 +125,7 @@ public class QueryManager implements ServiceConnection {
 		if (SymphonyService.getInstance().isBinded() == false)
 			return;
 
-		Log.d("OperatorTester", "[QueryManager] Services initialization completed");
+		Log.d("OperatorTester", "[QueryManager] onServiceConnected");
 
 		// 작업 형식을 갱신한다. MW or W or....
 		// SymphonyService.getInstance().updateTaskType("MW");
@@ -127,7 +134,7 @@ public class QueryManager implements ServiceConnection {
 		mRegisteredContexts.clear();
 		mQueryIds.clear();
 
-		//registerQuery(mQuery);
+		registerQuery(selectedQuery);
 	}
 
 	@Override

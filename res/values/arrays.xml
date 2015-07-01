@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="spinner">
-        <item>SOUND</item>
-        <item>PLACE</item>
-        <item>EVENT</item>
+        <item>SOUND 3780 10080 3000</item>
+        <item>PLACE 10000 10000 6000</item>
+        <item>EVENT 945 1260 775</item>
     </string-array>
 </resources>
