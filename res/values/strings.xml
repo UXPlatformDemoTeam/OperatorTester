@@ -2,6 +2,10 @@
 <resources>
 
     <string name="app_name">OperatorTester</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="symphoney">심포니</string>
+    <string name="on">On</string>
+    <string name="off">Off</string>
+    <string name="refresh">새로고침</string>
+    <string name="quit">종료</string>
 
 </resources>
