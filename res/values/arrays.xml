@@ -34,5 +34,15 @@
         <item>SPECTRUM 2000 2000 </item>
         <item>SQUARE 2000 2000 0</item>
         <item>SUM 2000 2000 0</item>
+        <item>VARIANCE 2000 2000 0</item>
+        <item>WINDOW_FUNCTION 2000 2000 0</item>
+        <item>ROW_PERCENTILE 2000 2000 0</item>
+        <item>ROW_SORT 2000 2000 0</item>
+        <item>SMOOTHING 2000 2000 0</item>
+        <item>SAC 2000 2000 0</item>
+        <item>ACCELEROMETER 7560 10080 6000</item>
+        <item>CORRELATION 2000 2000 0</item>
+        <item>LEFR 3780 10080 3000</item>
+        <item>FFTC 3780 10080 3000</item>
     </string-array>
 </resources>
