@@ -4,7 +4,7 @@
         <item>SOUND 3780 10080 3000</item>
         <item>PLACE 10000 10000 6000</item>
         <item>EVENT 945 1260 775</item>
-        <item>RESAMPLING1 2000 2000 0</item>
+        <item>RESAMPLING 2000 2000 0</item>
         <item>RECORDING 2000 2000 0</item>
         <item>AVERAGE 2000 2000 0</item>
         <item>AVERAGE_VECTOR 2000 2000 0</item>
@@ -25,13 +25,13 @@
         <item>MFCC 2000 2000 0</item>
         <item>MFCC_DEMULTIPLEXER 2000 2000 0</item>
         <item>NORMALIZE 2000 2000 0</item>
-        <item>RESAMPLING2 2000 2000 0</item>
+        <item>ARGMAX 2000 2000 0</item>
         <item>RMS 2000 2000 0</item>
         <item>SC 2000 2000 0</item>
         <item>SF 2000 2000 0</item>
         <item>SRF 2000 2000 0</item>
         <item>RSE 2000 2000 0</item>
-        <item>SPECTRUM 2000 2000 </item>
+        <item>SPECTRUM 2000 2000 0</item>
         <item>SQUARE 2000 2000 0</item>
         <item>SUM 2000 2000 0</item>
         <item>VARIANCE 2000 2000 0</item>
