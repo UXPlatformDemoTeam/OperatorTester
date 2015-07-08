@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="spinner">
-        <item>SOUND 3780 10080 3000</item>
+        <!-- <item>SOUND 3780 10080 3000</item>
         <item>PLACE 10000 10000 6000</item>
-        <item>EVENT 945 1260 775</item>
+        <item>EVENT 945 1260 775</item> -->
         <item>RESAMPLING 2000 2000 0</item>
         <item>RECORDING 2000 2000 0</item>
         <item>AVERAGE 2000 2000 0</item>
@@ -44,5 +44,7 @@
         <item>CORRELATION 2000 2000 0</item>
         <item>LEFR 3780 10080 3000</item>
         <item>FFTC 3780 10080 3000</item>
+        <item>SWINDOW 2000 2000 0</item>
+        <item>DECREMENT 2000 2000 0</item>
     </string-array>
 </resources>

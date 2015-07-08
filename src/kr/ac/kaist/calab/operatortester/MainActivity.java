@@ -105,7 +105,6 @@ public class MainActivity extends Activity {
 		boolean on = ((ToggleButton)view).isChecked();
 		if (on){
 			mQueryManager.bindPartitionService(this, selectedContextType);
-			Toast.makeText(this, "Bind.", Toast.LENGTH_SHORT).show();
 		}else{
 			mQueryManager.deregisterAllQueries();	//TODO deregister all the query.
 			mQueryManager.unbindPartitionService(this);
