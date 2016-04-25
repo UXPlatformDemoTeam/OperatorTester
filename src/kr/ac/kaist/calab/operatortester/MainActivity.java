@@ -126,9 +126,10 @@ public class MainActivity extends Activity {
 	// Check whether Symphony is running or not.
 	private void checkSymphonyStatus() {
 		ActivityManager am = (ActivityManager)((Context)MainActivity.this).getSystemService(Context.ACTIVITY_SERVICE);
-		List<ActivityManager.RunningAppProcessInfo> listOfApps = am.getRunningAppProcesses();
-		for (ActivityManager.RunningAppProcessInfo procinfo : listOfApps) {
-			if (procinfo.processName.contains("com.nclab.partitioning.service")) {
+		List<ActivityManager.RunningServiceInfo> listOfApps = am.getRunningServices(Integer.MAX_VALUE);
+
+		for (ActivityManager.RunningServiceInfo procinfo : listOfApps) {
+			if (procinfo.service.getPackageName().contains("com.nclab.partitioning.service")) {
 				setSymphonyStatus(true);
 				return;
 			}
