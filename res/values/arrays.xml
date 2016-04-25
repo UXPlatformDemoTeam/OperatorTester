@@ -46,5 +46,10 @@
         <item>FFTC 3780 10080 3000</item>
         <item>SWINDOW 2000 2000 0</item>
         <item>DECREMENT 2000 2000 0</item>
+        <item>GetVolume 2000 2000 0</item>
+        <item>RECORDINGDOUBLE 2000 2000 0</item>
+        <item>SPEAKER 2000 2000 0</item>
+        <item>GMM 2000 2000 0</item>
+        <item>ABSORB 2000 2000 0</item>
     </string-array>
 </resources>
