@@ -35,6 +35,7 @@ public final class SymphonyService
 	{
 		// 서비스 인텐트를 생성한다.
 		final Intent serviceIntent = new Intent(SERVICE_ACTION);
+		serviceIntent.setPackage("com.nclab.partitioning.service");
 
 		// 서비스를 연결한다.
 		conn = new InnerServiceConnection();
