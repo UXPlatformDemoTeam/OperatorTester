@@ -58,7 +58,7 @@
         <item>SPEAKER 2000 2000 0</item>
         <item>GMM 3780 10080 3000</item>
         <item>ABSORB 2000 2000 0</item>
-        
+
         <item>SEGMENTOR 2000 2000 0</item>
     </string-array>
 </resources>
