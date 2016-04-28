@@ -46,5 +46,14 @@
         <item>FFTC 3780 10080 3000</item>
         <item>SWINDOW 2000 2000 0</item>
         <item>DECREMENT 2000 2000 0</item>
+        <item>DC 2000 2000 0</item>
+        <item>DECISION_TREE 2000 2000 0</item>
+        <item>TWINDOW 2000 2000 0</item>
+        <item>SBUFFERWIN 2000 2000 0</item>
+        <item>RAWDELTA_INTEGRAL 2000 2000 0</item>
+        <item>HAMMING_WINDOW 2000 2000 0</item>
+        <item>DFT_1D 2000 2000 0</item>
+        
+        <item>SEGMENTOR 2000 2000 0</item>
     </string-array>
 </resources>
