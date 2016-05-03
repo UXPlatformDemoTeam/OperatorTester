@@ -60,6 +60,11 @@
         <item>ABSORB 2000 2000 0</item>
         <item>LOGGING 2000 2000 0</item>
         <item>KNN 2000 2000 0</item>
+		<item>SD 2000 2000 0</item>
+		<item>GEO_MEAN 2000 2000 0</item>
+		<item>HARMO_MEAN 2000 2000 0</item>
+		<item>RANDOM 2000 2000 0</item>
+		<item>SORT 2000 2000 0</item>
 
         <item>SEGMENTOR 2000 2000 0</item>
     </string-array>
