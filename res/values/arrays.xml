@@ -65,6 +65,7 @@
 		<item>HARMO_MEAN 2000 2000 0</item>
 		<item>RANDOM 2000 2000 0</item>
 		<item>SORT 2000 2000 0</item>
+		<item>KMEANS 2000 2000 0</item>
 
         <item>SEGMENTOR 2000 2000 0</item>
     </string-array>
