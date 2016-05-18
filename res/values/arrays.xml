@@ -67,6 +67,5 @@
 		<item>SORT 2000 2000 0</item>
 		<item>KMEANS 2000 2000 0</item>
 
-        <item>SEGMENTOR 2000 2000 0</item>
     </string-array>
 </resources>
